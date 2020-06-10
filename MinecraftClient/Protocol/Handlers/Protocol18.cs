@@ -346,7 +346,7 @@ namespace MinecraftClient.Protocol.Handlers
                                 }
 
                                 int blockX = locationXZ >> 4;
-                                int blockZ = locationXZ & 0x0F;
+                                int blockZ = locationXZ & 0x0E;
                                 Block block = new Block(blockIdMeta);
                                 handler.GetWorld().SetBlock(new Location(chunkX, chunkZ, blockX, blockY, blockZ), block);
                             }
