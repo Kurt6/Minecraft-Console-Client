@@ -23,7 +23,6 @@ namespace MinecraftClient.Protocol.Handlers
         TabComplete,
         EntityAction,
         PlayerPosition,
-        PlayerPositionAndLook,
         TeleportConfirm,
         HeldItemChange,
         InteractEntity,
