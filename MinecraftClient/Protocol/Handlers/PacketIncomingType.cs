@@ -18,7 +18,6 @@ namespace MinecraftClient.Protocol.Handlers
         JoinGame,
         ChatMessage,
         Respawn,
-        PlayerPositionAndLook,
         ChunkData,
         MultiBlockChange,
         BlockChange,
