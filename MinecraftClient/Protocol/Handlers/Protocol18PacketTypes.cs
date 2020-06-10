@@ -459,7 +459,6 @@ namespace MinecraftClient.Protocol.Handlers
                     case PacketOutgoingType.TabComplete: return 0x10;
                     case PacketOutgoingType.EntityAction: return 0x1C;
                     case PacketOutgoingType.PlayerPosition: return 0x12;
-                    case PacketOutgoingType.PlayerPositionAndLook: return 0x13;
                     case PacketOutgoingType.HeldItemChange: return 0x24;
                     case PacketOutgoingType.InteractEntity: return 0x0E;
                     case PacketOutgoingType.UseItem: return 0x2E;
