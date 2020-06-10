@@ -38,6 +38,7 @@ namespace MinecraftClient.Protocol.Handlers
         internal const int MC114Version = 477;
         internal const int MC115Version = 573;
         internal const int MC1152Version = 578;
+        internal const int MC116Version = 725;
 
         private int compression_treshold = 0;
         private bool autocomplete_received = false;
@@ -67,19 +68,19 @@ namespace MinecraftClient.Protocol.Handlers
             this.pForge = new Protocol18Forge(forgeInfo, protocolVersion, dataTypes, this, handler);
             this.pTerrain = new Protocol18Terrain(protocolVersion, dataTypes, handler);
 
-            if (handler.GetTerrainEnabled() && protocolversion > MC1152Version)
+            if (handler.GetTerrainEnabled() && protocolversion > MC116Version)
             {
                 ConsoleIO.WriteLineFormatted("§8Terrain & Movements currently not handled for that MC version.");
                 handler.SetTerrainEnabled(false);
             }
 
-            if (handler.GetInventoryEnabled() && (protocolversion < MC110Version || protocolversion > MC1152Version))
+            if (handler.GetInventoryEnabled() && (protocolversion < MC110Version || protocolversion > MC116Version))
             {
                 ConsoleIO.WriteLineFormatted("§8Inventories are currently not handled for that MC version.");
                 handler.SetInventoryEnabled(false);
             }
 
-            if (handler.GetEntityHandlingEnabled() && (protocolversion <= MC1122Version || protocolversion > MC1152Version))
+            if (handler.GetEntityHandlingEnabled() && (protocolversion <= MC1122Version || protocolversion > MC116Version))
             {
                 ConsoleIO.WriteLineFormatted("§8Entities are currently not handled for that MC version.");
                 handler.SetEntityHandlingEnabled(false);
@@ -87,7 +88,7 @@ namespace MinecraftClient.Protocol.Handlers
 
             if (protocolversion >= MC113Version)
             {
-                if (protocolVersion > MC1152Version && handler.GetTerrainEnabled())
+                if (protocolVersion > MC116Version && handler.GetTerrainEnabled())
                     throw new NotImplementedException("Please update block types handling for this Minecraft version. See Material.cs");
                 if (protocolVersion >= MC115Version)
                     Block.Palette = new Palette115();
@@ -99,7 +100,7 @@ namespace MinecraftClient.Protocol.Handlers
 
             if (protocolversion >= MC114Version)
             {
-                if (protocolversion > MC1152Version && handler.GetEntityHandlingEnabled())
+                if (protocolversion > MC116Version && handler.GetEntityHandlingEnabled())
                     throw new NotImplementedException("Please update entity types handling for this Minecraft version. See EntityType.cs");
                 if (protocolversion >= MC115Version)
                     entityPalette = new EntityPalette115();
